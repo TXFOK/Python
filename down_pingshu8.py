@@ -21,35 +21,6 @@ from urllib import parse
 import time
 
 
-# class JobDown:
-#     def __init__(self, session, requestUrl, saveFolder, logger=None):
-#         self.__sess = session
-#         self.__targetLink = requestUrl
-#         self.__logger = logger
-
-#     def __header(self):
-#         head = {
-#             'Accept': 'application/json, text/javascript, */*; q=0.01',
-#             'Accept-Encoding': 'gzip, deflate',
-#             'Accept-Language': 'zh-CN,zh;q=0.9',
-#             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.84 Safari/537.36'
-#         }
-#         return head
-
-#     async def __download(self):
-#         loop = asyncio.get_event_loop()
-#         ret_future = loop.run_in_executor(None, self.download)
-#         result = await ret_future
-#         return result
-
-#     def download(self, url):
-#         print('get :run....')
-#         loop = asyncio.get_event_loop()
-#         ret_future = loop.run_in_executor(None, requests.get, url)
-#         result = await ret_future
-#         return result
-
-
 class Session:
 
     def __init__(self, links, LogLevel=logging.DEBUG):
@@ -286,32 +257,3 @@ if __name__ == "__main__":
         print('配置文件为空')
 
 
-# import asyncio
-# import requests
-# from functools import partial
-
-# def getText(future_result, sub):
-#     r = future_result.result()
-#     print(len(r.text))
-#     print( int(r.status_code)/2)  # 如果访问正常，结果 = 100.0
-
-# async def get(url):
-#     print('get :run....')
-#     loop =asyncio.get_event_loop()
-#     ret_future = loop.run_in_executor(None,requests.get,url)
-#     result = await ret_future
-#     return result
-
-# link = 'http://www.njtech.edu.cn'
-# loop = asyncio.get_event_loop()
-# task = loop.create_task(get(link))
-# task_call_back = partial(getText,sub=2)
-# task.add_done_callback(task_call_back)
-# # 也可以用以下两句
-# # task = asyncio.ensure_future(get(link))
-# # task.add_done_callback(task_call_back)
-
-# try:
-#     loop.run_until_complete(task)
-# finally:
-#     loop.close()
